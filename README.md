@@ -1,3 +1,7 @@
+[![Build Status](https://travis-ci.org/ibm-cloud-solutions/hubot-cf-convenience.svg?branch=master)](https://travis-ci.org/ibm-cloud-solutions/hubot-cf-convenience)
+[![Dependency Status](https://dependencyci.com/github/ibm-cloud-solutions/hubot-cf-convenience/badge)](https://dependencyci.com/github/ibm-cloud-solutions/hubot-cf-convenience)
+[![npm](https://img.shields.io/npm/v/hubot-cf-convenience.svg?maxAge=2592000)](https://www.npmjs.com/package/hubot-cf-convenience)
+
 # hubot-cf-convenience
 
 Small collection of syntactic sugar convenience functions for `cf-nodejs-client`.
