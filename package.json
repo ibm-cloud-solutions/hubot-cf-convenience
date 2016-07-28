@@ -7,11 +7,7 @@
   "scripts": {
     "test": ". test/.env && mocha test",
     "coverage": ". test/.env && istanbul cover -x '**/coverage/**' -x '**/tools/**' --include-all-sources --report lcov --report cobertura --report text --dir ./gh-pages/coverage _mocha -- test",
-    "publish-please": "publish-please",
-    "prepublish": "publish-please guard",
-    "lint": "eslint cf.js",
-    "release": "npm run lint && node tools/release",
-    "postpublish": "git push origin master && git push --tags"
+    "lint": "eslint cf.js"
   },
   "repository": {
     "type": "git",
