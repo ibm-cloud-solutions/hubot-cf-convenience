@@ -6,7 +6,7 @@
   "main": "cf.js",
   "scripts": {
     "test": ". test/.env && mocha test",
-    "coverage": ". test/.env && istanbul cover -x '**/coverage/**' -x '**/tools/**' --include-all-sources --report lcov --report cobertura --report text --dir ./gh-pages/coverage _mocha -- test",
+    "coverage": ". test/.env && istanbul cover ./node_modules/mocha/bin/_mocha --report lcovonly -- -R spec && cat ./coverage/lcov.info | ./node_modules/coveralls/bin/coveralls.js && rm -rf ./coverage",
     "lint": "eslint cf.js"
   },
   "repository": {
@@ -18,20 +18,24 @@
     "cf-client": "0.13.20",
     "crypto": "0.0.3"
   },
+  "keywords": [
+    "ibm cloud",
+    "ibm",
+    "cloud foundry",
+    "cf",
+    "cf-client",
+    "hubot",
+    "hubot-scripts"
+  ],
   "devDependencies": {
     "chai": "^3.5.0",
-    "commander": "^2.9.0",
-    "conventional-recommended-bump": "^0.2.1",
-    "istanbul": "0.4.0",
-    "istanbul-cobertura-badger": "1.2.1",
+    "coveralls": "^2.11.12",
     "eslint": "^2.13.1",
     "eslint-config-strongloop": "^2.0.1",
+    "istanbul": "0.4.0",
     "mocha": "^2.4.5",
     "nock": "^8.0.0",
-    "publish-please": "^2.1.4",
-    "rewire": "2.5.1",
-    "semver": "^5.1.0",
-    "shelljs": "^0.7.0"
+    "rewire": "2.5.1"
   },
   "files": [
     "cf.js"
