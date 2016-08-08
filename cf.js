@@ -193,7 +193,8 @@ function buildServiceCache(cfServices, cache) {
 						description: service.entity.description,
 						label: service.entity.label,
 						display_name: displayName || service.entity.label,
-						doc_url: documentationUrl || null
+						doc_url: documentationUrl || null,
+						deprecated: Array.isArray(service.entity.tags) && service.entity.tags.indexOf('ibm_deprecated') > -1
 					});
 				});
 
@@ -216,7 +217,7 @@ function buildServiceCache(cfServices, cache) {
  */
 function getServiceGuid(serviceName) {
 	for (let i = 0; i < this.serviceCache.length; i++) {
-		if (this.serviceCache[i].label === serviceName) {
+		if (this.serviceCache[i].label === serviceName || this.serviceCache[i].display_name === serviceName) {
 			return this.serviceCache[i].guid;
 		}
 	}

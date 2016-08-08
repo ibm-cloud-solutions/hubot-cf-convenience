@@ -59,6 +59,15 @@ describe('Test CF Convenience', function() {
 			});
 		});
 
+		it('should get service by display name', function(done) {
+			let testDone = done;
+			cf.promise.then(() => {
+				let guid = cf.getServiceGuid('A ValidService2 Display Name');
+				expect(guid).to.be.a.string;
+				testDone();
+			});
+		});
+
 		it('should get the active space', function(done) {
 			let testDone = done;
 			cf.promise.then(() => {
@@ -81,6 +90,28 @@ describe('Test CF Convenience', function() {
 				testDone();
 			}).catch((err) => {
 				console.log(err);
+			});
+		});
+	});
+
+	context('Validate service data', function() {
+		it('should detect deprecated services', function(done) {
+			let testDone = done;
+			cf.promise.then((result) => {
+				let service1, service2;
+				result.serviceCache.forEach((service) => {
+					if(service.guid === 'validService1Guid') {
+						service1 = service;
+					}
+					else if(service.guid === 'validService2Guid') {
+						service2 = service;
+					}
+				});
+				expect(service1).to.be.a.object;
+				expect(service2).to.be.a.object;
+				expect(service1.deprecated).to.be.false;
+				expect(service2.deprecated).to.be.true;
+				testDone();
 			});
 		});
 	});

@@ -257,7 +257,13 @@ module.exports = {
 				},
 				entity: {
 					label: 'validService2',
-					description: 'Description of validService2'
+					description: 'Description of validService2',
+					tags: [
+						'mobile',
+						'ibm_experimental',
+						'ibm_deprecated'
+					],
+					extra: '{\"displayName\":\"A ValidService2 Display Name\"}'
 				}
 			}
 		]
