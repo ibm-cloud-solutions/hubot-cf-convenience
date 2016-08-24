@@ -48,6 +48,9 @@ const promise = new Promise((resolve, reject) => {
 	const ServiceBindings = new cf.ServiceBindings(endpoint);
 	const Events = new cf.Events(endpoint);
 	const Logs = new cf.Logs();
+	const Domains = new cf.Domains(endpoint);
+	const Routes = new cf.Routes(endpoint);
+
 	const guids = {};
 	const serviceCache = [];
 
@@ -77,6 +80,9 @@ const promise = new Promise((resolve, reject) => {
 		ServiceBindings.setToken(secureToken);
 		Events.setToken(secureToken);
 		Logs.setToken(secureToken);
+		Domains.setToken(secureToken);
+		Routes.setToken(secureToken);
+
 		Logs.setEndPoint(logEndpoint);
 
 		// Get the list of services
@@ -146,6 +152,8 @@ const promise = new Promise((resolve, reject) => {
 	module.exports.guids = guids;
 	module.exports.serviceCache = serviceCache;
 	module.exports.activeSpace = activeSpace;
+	module.exports.Domains = Domains;
+	module.exports.Routes = Routes;
 
 	stayAlive(UsersUAA);
 });
