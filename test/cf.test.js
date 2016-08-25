@@ -26,6 +26,42 @@ describe('Test CF Convenience', function() {
 		return;
 	});
 
+	context('Get service label', function() {
+		it('should return valid label if display name exists', function(done) {
+			let testDone = done;
+			cf.promise.then(() => {
+				expect(cf.getServiceLabel('A ValidService2 Display Name')).to.eql('validService2');
+				testDone();
+			});
+		});
+
+		it('should return same display name if it does not exist', function(done) {
+			let testDone = done;
+			cf.promise.then(() => {
+				expect(cf.getServiceLabel('invalidDisplayName')).to.eql('invalidDisplayName');
+				testDone();
+			});
+		});
+	});
+
+	context('Get service display name', function() {
+		it('should return valid display name if label exists', function(done) {
+			let testDone = done;
+			cf.promise.then(() => {
+				expect(cf.getServiceDisplayName('validService2')).to.eql('A ValidService2 Display Name');
+				testDone();
+			});
+		});
+
+		it('should return same label if it does not exist', function(done) {
+			let testDone = done;
+			cf.promise.then(() => {
+				expect(cf.getServiceDisplayName('invalidLabel')).to.eql('invalidLabel');
+				testDone();
+			});
+		});
+	});
+
 	context('initialize cf with promise', function() {
 		it('should complete and have initialized objects', function(done) {
 			let testDone = done;
@@ -79,7 +115,7 @@ describe('Test CF Convenience', function() {
 							id: '12345'
 						}
 					}
-				}
+				};
 				let robot = {
 					brain: {
 						get: function(id) {
@@ -102,10 +138,10 @@ describe('Test CF Convenience', function() {
 			cf.promise.then((result) => {
 				let service1, service2;
 				result.serviceCache.forEach((service) => {
-					if(service.guid === 'validService1Guid') {
+					if (service.guid === 'validService1Guid') {
 						service1 = service;
 					}
-					else if(service.guid === 'validService2Guid') {
+					else if (service.guid === 'validService2Guid') {
 						service2 = service;
 					}
 				});
@@ -122,7 +158,7 @@ describe('Test CF Convenience', function() {
 		it('should execute getApp', function(done) {
 			let testDone = done;
 			cf.promise.then(() => {
-				let result = cfRewire.__get__('getApp')('testApp2Name','space');
+				let result = cfRewire.__get__('getApp')('testApp2Name', 'space');
 				expect(result).to.be.a('promise');
 				testDone();
 			});

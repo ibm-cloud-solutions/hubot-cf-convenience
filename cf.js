@@ -232,6 +232,30 @@ function getServiceGuid(serviceName) {
 }
 
 /**
+ * Get the display_name of a service, given its label.  Return label if not found.
+ */
+function getServiceDisplayName(serviceLabel) {
+	for (let i = 0; i < this.serviceCache.length; i++) {
+		if (this.serviceCache[i].label === serviceLabel) {
+			return this.serviceCache[i].display_name;
+		}
+	}
+	return serviceLabel;
+}
+
+/**
+ * Get the label of a service, given its display_name.  Return display_name if not found.
+ */
+function getServiceLabel(serviceName) {
+	for (let i = 0; i < this.serviceCache.length; i++) {
+		if (this.serviceCache[i].display_name === serviceName) {
+			return this.serviceCache[i].label;
+		}
+	}
+	return serviceName;
+}
+
+/**
  * Keep the hubot connection to bluemix alive.
  * @param {UsersUAA} uaa Cloud Foundry UAA manager
  */
@@ -247,3 +271,5 @@ function stayAlive(uaa) {
 
 module.exports.promise = promise;
 module.exports.getServiceGuid = getServiceGuid;
+module.exports.getServiceDisplayName = getServiceDisplayName;
+module.exports.getServiceLabel = getServiceLabel;
