@@ -35,6 +35,8 @@ describe('Test CF Convenience', function() {
 				expect(cf).to.have.property('Spaces');
 				expect(cf).to.have.property('Services');
 				expect(cf).to.have.property('ServiceInstances');
+				expect(cf).to.have.property('Domains');
+				expect(cf).to.have.property('Routes');
 				testDone();
 			});
 		});
