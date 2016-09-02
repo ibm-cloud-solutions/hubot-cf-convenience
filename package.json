@@ -15,8 +15,10 @@
   },
   "author": "ibm-cloud-solutions",
   "dependencies": {
-    "cf-client": "0.13.22",
     "crypto": "0.0.3"
+  },
+  "peerDependencies": {
+    "cf-client": ">=0.13.25"
   },
   "keywords": [
     "ibm cloud",
