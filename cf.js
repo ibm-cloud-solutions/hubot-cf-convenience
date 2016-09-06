@@ -24,9 +24,9 @@ const promise = new Promise((resolve, reject) => {
 	// - HUBOT_BLUEMIX_PASSWORD - Password for the Bluemix User
 	const endpoint = process.env.HUBOT_BLUEMIX_API;
 	const username = process.env.HUBOT_BLUEMIX_USER;
-	var password = process.env.HUBOT_BLUEMIX_PASSWORD;
+	let password = process.env.HUBOT_BLUEMIX_PASSWORD;
 	if (process.env.HUBOT_BLUEMIX_SALT) {
-		var decipher = crypto.createDecipher('aes-256-cbc', process.env.HUBOT_BLUEMIX_SALT);
+		let decipher = crypto.createDecipher('aes-256-cbc', process.env.HUBOT_BLUEMIX_SALT);
 		decipher.update(password, 'base64', 'utf8');
 		password = decipher.final('utf8');
 	}
@@ -54,7 +54,7 @@ const promise = new Promise((resolve, reject) => {
 	const guids = {};
 	const serviceCache = [];
 
-	var secureToken = null;
+	let secureToken = null;
 
 	let servicesPromise;
 
@@ -189,8 +189,8 @@ function buildServiceCache(cfServices, cache) {
 			cfServices.getServices({'results-per-page': 100, page: page}).then((result) => {
 				const serviceList = result.resources;
 				serviceList.forEach((service) => {
-					var displayName;
-					var documentationUrl;
+					let displayName;
+					let documentationUrl;
 					if (service.entity.extra) {
 						const extra = JSON.parse(service.entity.extra);
 						displayName = extra.displayName;
