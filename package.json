@@ -1,7 +1,7 @@
 {
   "name": "hubot-cf-convenience",
   "version": "0.0.13",
-  "description": "Small collection of syntactic sugar convenience functions for cf-nodejs-client.`",
+  "description": "Small collection of syntactic sugar convenience functions for cf-nodejs-client, useful for Hubot scripts.",
   "license": "Apache-2.0",
   "main": "cf.js",
   "scripts": {
