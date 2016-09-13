@@ -27,7 +27,8 @@
     "cf",
     "cf-client",
     "hubot",
-    "hubot-scripts"
+    "hubot-scripts",
+    "cloud"
   ],
   "devDependencies": {
     "chai": "^3.5.0",
